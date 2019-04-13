@@ -9,7 +9,7 @@ void printWelcomeScreen() {
     for (int i = 0; i < 10; i++) {
         std::cout << '*';
     }
-    std::endl;
+    std::cout << std::endl;
 }
 int main() {
 
