@@ -1,8 +1,18 @@
+#ifndef ATM_HPP
+#define ATM_HPP
+
+#include "Account.hpp"
+
 class ATM {
 public:
-    ATM();
-    withdraw(Account*, )
+    ATM() = default;
+    ~ATM() = default;
+    bool withdraw(Account* acc, int amt);
+    bool deposit(Account* acc, double amt);
+    double view_balance(Account* acc);
 private:
-    int cashBalance;
+    double cashBalance = 100000;
     bool final = false;
 };
+
+#endif

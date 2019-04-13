@@ -11,7 +11,6 @@ class Customer
         std::string fname, lname;
         Account account;
         int pinNum;
-    
     public:
         Customer(std::string f, std::string l, int pin) {fname = f; lname = l; pinNum = pin;}
         std::string getName() {return fname + ' ' + lname;}
