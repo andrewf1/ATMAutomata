@@ -1,4 +1,4 @@
-#include "ATM.hpp"
+#include "Account.hpp"
 
 bool ATM::withdraw(Account* acc, int amt) {
     acc->withdraw(amt);

@@ -9,6 +9,7 @@ class Account
     public:
         Account(long acc_num, double bal) { accountNum = acc_num; balance = bal; }
         double getBalance() {return balance;}
+        long getAcountNum() {return accountNum;}
         void deposit(double x) {balance += x;}
         void withdraw(int x) {balance -= x;}
 };
