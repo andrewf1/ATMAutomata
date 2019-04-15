@@ -10,7 +10,7 @@ void Transaction::print()
     std::cout << std::fixed << std::setprecision(2);
     for(auto it = exchanges.begin(); it != exchanges.end(); it++)
     {
-        std::cout << '\t' << it->first << ' $' << it->second << std::endl;
+        std::cout << '\t' << it->first << " $" << it->second << std::endl;
     }
     std::cout << "End Balance: $" << currentBalance << std::endl;
 }
