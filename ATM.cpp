@@ -72,8 +72,9 @@ long ATM::verifyAccount()
     long accountNum;
     std::cin >> accountNum;
     int count = 0;
-    while(customers.find(accountNum) == customers.end() && count < 3)
+    while(count < 3)
     {
+        if(customers.find(accountNum) != customers.end()) break;
         std::cout << "Doesn't match any account number. Please try again." << std::endl;
         std::cin >> accountNum;
         count++;
