@@ -150,7 +150,7 @@ void ATM::start()
                 case 2:
 {                    std::cout << "Enter Amount: " << std::endl;
                     std::cin >> amount;
-                    if(amount > customers[accountNum].accountBalance())
+                    if(amount > customers[accountNum].accountBalance() || amount > cashBalance )
                     {
                         std::cout << "Insufficient Funds" << std::endl;
                         break;
