@@ -126,8 +126,8 @@ void ATM::start()
                     break;}
                 case 2:
 {                    std::cout << "Enter Amount: " << std::endl;
-                    std::cout << "Dispensing..." << std::endl;
                     std::cin >> amount;
+                    std::cout << "Dispensing..." << std::endl;
                     if(amount % 10 != 0)
                     {
                         std::cout << "Can only dispense $10 or higher bills" << std::endl;
@@ -138,8 +138,8 @@ void ATM::start()
                     break;}
                 case 3:
 {                    std::cout << "Enter Amount: " << std::endl;
-                    std::cout << "Depositing..." << std::endl;
                     std::cin >> amount;
+                    std::cout << "Depositing..." << std::endl;
                     deposit(customers[accountNum].getAccount(), amount);
                     t.editTran('-', amount);
                     break;}
@@ -147,7 +147,7 @@ void ATM::start()
             std::cout << "Finished? (y/n)" << std::endl;
             char yesOrNo;
             std::cin >> yesOrNo;
-            if(yesOrNo == 'n') tBool = false;
+            if(yesOrNo == 'y') tBool = false;
         }
         t.print();
     }
