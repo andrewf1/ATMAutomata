@@ -3,6 +3,7 @@
 #include "ATM.hpp"
 
 #include <iostream>
+#include <iomanip>
 
 void ATM::fillCustomers()
 {
@@ -123,7 +124,7 @@ void ATM::start()
             {
                 case 1:
 {                    double tempBal = view_balance(customers[accountNum].getAccount());
-                    std::cout << "Current Balance: " << tempBal << std::endl;
+                    std::cout << "Current Balance: $" << std::setprecision(2) << std::fixed << tempBal << std::endl;
                     break;}
                 case 2:
 {                    std::cout << "Enter Amount: " << std::endl;
