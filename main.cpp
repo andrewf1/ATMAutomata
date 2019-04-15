@@ -12,6 +12,7 @@ void printWelcomeScreen() {
     std::cout << std::endl;
 }
 int main() {
+    std::cout <<"hi" << std::endl;
     ATM atm;
     atm.start();
     return 0;

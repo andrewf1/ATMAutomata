@@ -7,6 +7,7 @@ class Account
         long accountNum;
         double balance;
     public:
+        Account() = default;
         Account(long acc_num, double bal) { accountNum = acc_num; balance = bal; }
         double getBalance() {return balance;}
         long getAcountNum() {return accountNum;}

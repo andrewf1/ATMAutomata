@@ -6,6 +6,7 @@
 
 void ATM::fillCustomers()
 {
+    std::cout << "inside fillCustomers()" << std::endl;
     Account acc(123456789, 25.00);
     Customer cust("Michael", "Scott", 1234, acc);
     std::pair<long, Customer> temp(cust.accountNum(), cust);
@@ -13,23 +14,23 @@ void ATM::fillCustomers()
 
     Account acc2(987654321, 500.82);
     Customer cust2("Dwight", "Schrute", 4321, acc2);
-    std::pair<long, Customer> temp(cust2.accountNum(), cust2);
-    customers.insert(temp);
+    std::pair<long, Customer> temp2(cust2.accountNum(), cust2);
+    customers.insert(temp2);
 
     Account acc3(123459876, 10256.24);
     Customer cust3("Oscar", "Martinez", 9512, acc3);
-    std::pair<long, Customer> temp(cust3.accountNum(), cust3);
-    customers.insert(temp);
+    std::pair<long, Customer> temp3(cust3.accountNum(), cust3);
+    customers.insert(temp3);
 
     Account acc4(987651234, 256.24);
     Customer cust4("Kelly", "Kapur", 1478, acc4);
-    std::pair<long, Customer> temp(cust4.accountNum(), cust4);
-    customers.insert(temp);
+    std::pair<long, Customer> temp4(cust4.accountNum(), cust4);
+    customers.insert(temp4);
 
     Account acc5(715932468, 102.77);
     Customer cust5("Stanley", "Hudson", 2468, acc5);
-    std::pair<long, Customer> temp(cust5.accountNum(), cust5);
-    customers.insert(temp);
+    std::pair<long, Customer> temp5(cust5.accountNum(), cust5);
+    customers.insert(temp5);
 }
 
 void ATM::printMenu()
@@ -47,7 +48,7 @@ bool ATM::verifyPin(long accountNum)
     {
         std::cout << "Enter Pin Number" << std::endl;
         std::cin >> pin;
-        if(custmomers[accountNum].verifyPin(pin)) return true;
+        if(customers[accountNum].verifyPin(pin)) return true;
         else
         {
             count++;
@@ -81,17 +82,17 @@ long ATM::verifyAccount()
     else return accountNum;
 }
 
-bool ATM::withdraw(Account* acc, int amt) {
+void ATM::withdraw(Account* acc, int amt) {
     acc->withdraw(amt);
     cashBalance -= amt;
 }
 
-bool ATM::deposit(Account* acc, double amt) {
+void ATM::deposit(Account* acc, double amt) {
     acc->deposit(amt);
     cashBalance += amt;
 }
 
-double view_balance(Account* acc) {
+double ATM::view_balance(Account* acc) {
     return acc->getBalance();
 }
 
@@ -116,15 +117,16 @@ void ATM::start()
         {
             printMenu();
             std::cin >> action;
+            int amount;
             switch(action)
             {
                 case 1:
-                    std::cout << "Current Balance: " << view_balance(customers[accountNum].getAccount()) << std::endl;
-                    break;
+{                    double tempBal = view_balance(customers[accountNum].getAccount());
+                    std::cout << "Current Balance: " << tempBal << std::endl;
+                    break;}
                 case 2:
-                    std::cout << "Enter Amount: " << std::endl;
+{                    std::cout << "Enter Amount: " << std::endl;
                     std::cout << "Dispensing..." << std::endl;
-                    int amount; 
                     std::cin >> amount;
                     if(amount % 10 != 0)
                     {
@@ -133,15 +135,14 @@ void ATM::start()
                     } 
                     withdraw(customers[accountNum].getAccount(), amount);
                     t.editTran('+', amount);
-                    break;
+                    break;}
                 case 3:
-                    std::cout << "Enter Amount: " << std::endl;
+{                    std::cout << "Enter Amount: " << std::endl;
                     std::cout << "Depositing..." << std::endl;
-                    int amount;
                     std::cin >> amount;
                     deposit(customers[accountNum].getAccount(), amount);
                     t.editTran('-', amount);
-                    break;
+                    break;}
             }
             std::cout << "Finished? (y/n)" << std::endl;
             char yesOrNo;

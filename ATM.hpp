@@ -12,11 +12,10 @@ public:
     void start();
     void fillCustomers();
     void printMenu();
-    void executeTransactions();
     long verifyAccount();
     bool verifyPin(long);
-    bool withdraw(Account* acc, int amt);
-    bool deposit(Account* acc, double amt);
+    void withdraw(Account* acc, int amt);
+    void deposit(Account* acc, double amt);
     double view_balance(Account* acc);
 private:
     std::map<long, Customer> customers;
