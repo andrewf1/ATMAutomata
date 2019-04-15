@@ -7,7 +7,6 @@
 
 void ATM::fillCustomers()
 {
-    std::cout << "inside fillCustomers()" << std::endl;
     Account acc(123456789, 25.00);
     Customer cust("Michael", "Scott", 1234, acc);
     std::pair<long, Customer> temp(cust.accountNum(), cust);
@@ -138,6 +137,7 @@ void ATM::start()
             printMenu();
             std::cin >> action;
             int amount;
+            double depoAmt;
             std::cout << std::endl;
             switch(action)
             {
@@ -167,10 +167,10 @@ void ATM::start()
                 // State 11 deposits
                 case 3:
 {                    std::cout << "Enter Amount: " << std::endl;
-                    std::cin >> amount;
+                    std::cin >> depoAmt;
                     std::cout << "Depositing..." << std::endl;
                     deposit(customers[accountNum].getAccount(), amount);
-                    t.editTran('+', amount);
+                    t.editTran('+', depoAmt);
                     break;}
                 default:
                 {
