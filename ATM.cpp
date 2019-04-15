@@ -61,6 +61,7 @@ bool ATM::verifyPin(long accountNum)
             }
             else
             {
+                std::cout << std::endl;
                 std::cout << "Attempt " << count+1 << " of 3" << std::endl;
             }   
         }
@@ -75,6 +76,7 @@ long ATM::verifyAccount()
     int count = 1;
     while(count < 3)
     {
+        std::cout << std::endl;
         if(customers.find(accountNum) != customers.end()) break;
         if(std::cin.fail()) 
         {
@@ -108,6 +110,8 @@ void ATM::start()
     fillCustomers();
     while(true)
     {
+        // start state
+        std::cout << std::endl; 
         std::cout << "1. Make transaction" << std::endl;
         std::cout << "2. Exit" << std::endl;
         std::cout << "Choose one:" << std::endl;
@@ -119,23 +123,30 @@ void ATM::start()
             std::cout << "Not an option" << std::endl;
             continue;
         }
+        std::cout << std::endl;
+        // verifyAccount is states 2-4
         long accountNum = verifyAccount();
         if(accountNum == -1) continue;
+        // verifyPin has states 5-7
         if(!verifyPin(accountNum)) continue;
         Transaction t(customers[accountNum]);
         // Bad variable name
         bool tBool = true;
         while(tBool)
         {
+            // The transaction menu is state 8
             printMenu();
             std::cin >> action;
             int amount;
+            std::cout << std::endl;
             switch(action)
             {
+                // State 9 views the balance
                 case 1:
 {                    double tempBal = view_balance(customers[accountNum].getAccount());
                     std::cout << "Current Balance: $" << std::setprecision(2) << std::fixed << tempBal << std::endl;
                     break;}
+                // State 10 withdraws 
                 case 2:
 {                    std::cout << "Enter Amount: " << std::endl;
                     std::cin >> amount;
@@ -153,6 +164,7 @@ void ATM::start()
                     std::cout << "Dispensing..." << std::endl;
                     t.editTran('-', amount);
                     break;}
+                // State 11 deposits
                 case 3:
 {                    std::cout << "Enter Amount: " << std::endl;
                     std::cin >> amount;
@@ -160,12 +172,19 @@ void ATM::start()
                     deposit(customers[accountNum].getAccount(), amount);
                     t.editTran('+', amount);
                     break;}
+                default:
+                {
+                    std::cout << "Not an option" << std::endl;
+                    break;
+                }
             }
+            std::cout << std::endl;
             std::cout << "Finished? (y/n)" << std::endl;
             char yesOrNo;
             std::cin >> yesOrNo;
             if(yesOrNo == 'y') tBool = false;
         }
+        std::cout << std::endl;
         t.print();
     }
 }
