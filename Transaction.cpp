@@ -7,7 +7,7 @@ void Transaction::print()
 {
     std::cout << "Customer: " << customer.getName() << "    Account Number: " << customer.accountNum() << std::endl;
     std::cout << "Start Balace: " << startBalance << std::endl;
-    std::cout << std::setprecision(2);
+    std::cout << std::fixed << std::setprecision(2);
     for(auto it = exchanges.begin(); it != exchanges.end(); it++)
     {
         std::cout << '\t' << it->first << ' ' << it->second << std::endl;

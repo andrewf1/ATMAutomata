@@ -72,10 +72,15 @@ long ATM::verifyAccount()
     std::cout << "Enter account number:" << std::endl;
     long accountNum;
     std::cin >> accountNum;
-    int count = 0;
+    int count = 1;
     while(count < 3)
     {
         if(customers.find(accountNum) != customers.end()) break;
+        if(std::cin.fail()) 
+        {
+            std::cin.clear();
+            std::cin.ignore(1000, '\n');
+        }
         std::cout << "Doesn't match any account number. Please try again." << std::endl;
         std::cin >> accountNum;
         count++;
@@ -130,6 +135,11 @@ void ATM::start()
 {                    std::cout << "Enter Amount: " << std::endl;
                     std::cin >> amount;
                     std::cout << "Dispensing..." << std::endl;
+                    if(amount > customers[accountNum].accountBalance())
+                    {
+                        std::cout << "Insufficient Funds" << std::endl;
+                        break;
+                    }
                     if(amount % 10 != 0)
                     {
                         std::cout << "Can only dispense $10 or higher bills" << std::endl;
