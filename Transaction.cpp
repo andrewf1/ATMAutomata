@@ -12,7 +12,7 @@ void Transaction::print()
     {
         std::cout << '\t' << it->first << ' $' << it->second << std::endl;
     }
-    std::cout << "End Balance: " << currentBalance << std::endl;
+    std::cout << "End Balance: $" << currentBalance << std::endl;
 }
 
 void Transaction::editTran(char operand, double amount)
