@@ -12,6 +12,8 @@ public:
     void start();
     void fillCustomers();
     void printMenu();
+    void executeTransactions();
+    long verifyAccount();
     bool verifyPin(long);
     bool withdraw(Account* acc, int amt);
     bool deposit(Account* acc, double amt);
