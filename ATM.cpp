@@ -169,7 +169,7 @@ void ATM::start()
 {                    std::cout << "Enter Amount: " << std::endl;
                     std::cin >> depoAmt;
                     std::cout << "Depositing..." << std::endl;
-                    deposit(customers[accountNum].getAccount(), amount);
+                    deposit(customers[accountNum].getAccount(), depoAmt);
                     t.editTran('+', depoAmt);
                     break;}
                 default:
