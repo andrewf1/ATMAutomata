@@ -114,6 +114,11 @@ void ATM::start()
         int action;
         std::cin >> action;
         if(action == 2) return;
+        if(action > 2 || action < 1)
+        {
+            std::cout << "Not an option" << std::endl;
+            continue;
+        }
         long accountNum = verifyAccount();
         if(accountNum == -1) continue;
         if(!verifyPin(accountNum)) continue;
@@ -134,7 +139,6 @@ void ATM::start()
                 case 2:
 {                    std::cout << "Enter Amount: " << std::endl;
                     std::cin >> amount;
-                    std::cout << "Dispensing..." << std::endl;
                     if(amount > customers[accountNum].accountBalance())
                     {
                         std::cout << "Insufficient Funds" << std::endl;
@@ -146,14 +150,15 @@ void ATM::start()
                         break;
                     } 
                     withdraw(customers[accountNum].getAccount(), amount);
-                    t.editTran('+', amount);
+                    std::cout << "Dispensing..." << std::endl;
+                    t.editTran('-', amount);
                     break;}
                 case 3:
 {                    std::cout << "Enter Amount: " << std::endl;
                     std::cin >> amount;
                     std::cout << "Depositing..." << std::endl;
                     deposit(customers[accountNum].getAccount(), amount);
-                    t.editTran('-', amount);
+                    t.editTran('+', amount);
                     break;}
             }
             std::cout << "Finished? (y/n)" << std::endl;
