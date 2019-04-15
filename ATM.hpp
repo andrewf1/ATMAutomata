@@ -9,6 +9,7 @@ class ATM {
 public:
     ATM() = default;
     ~ATM() = default;
+    void start();
     void fillCustomers();
     void printMenu();
     bool verifyPin(long);
