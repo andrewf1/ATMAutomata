@@ -1,16 +1,22 @@
 #ifndef ATM_HPP
 #define ATM_HPP
 
-#include "Account.hpp"
+#include "Customer.hpp"
+
+#include <map>
 
 class ATM {
 public:
     ATM() = default;
     ~ATM() = default;
+    void fillCustomers();
+    void printMenu();
+    bool verifyPin(long);
     bool withdraw(Account* acc, int amt);
     bool deposit(Account* acc, double amt);
     double view_balance(Account* acc);
 private:
+    std::map<long, Customer> customers;
     double cashBalance = 100000;
     bool final = false;
 };
